@@ -1,10 +1,12 @@
 import React from 'react';
 import { Router } from '@components/Router';
 
+import { Container } from './styled';
+
 export const App = () => {
     return (
-        <div className="App">
+        <Container>
             <Router />
-        </div>
+        </Container>
     );
 };
