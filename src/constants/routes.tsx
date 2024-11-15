@@ -2,6 +2,7 @@ import React from 'react';
 import { Home } from '@pages/Home';
 import { SearchRecipe } from '@pages/SearchRecipe';
 import { Favorite } from '@pages/Favorite';
+import { NotFound } from '@pages/NotFound';
 
 export const ROUTES = {
     home: {
@@ -15,5 +16,9 @@ export const ROUTES = {
     favorites: {
         route: '/favorites',
         element: <Favorite />,
+    },
+    notFound: {
+        route: '*',
+        element: <NotFound />,
     },
 };

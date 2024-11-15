@@ -9,6 +9,7 @@ export const Router = () => {
                 <Route path={ROUTES.home.route} element={ROUTES.home.element} />
                 <Route path={ROUTES.info.route} element={ROUTES.info.element} />
                 <Route path={ROUTES.favorites.route} element={ROUTES.favorites.element} />
+                <Route path={ROUTES.notFound.route} element={ROUTES.notFound.element} />
             </Routes>
         </BrowserRouter>
     );
