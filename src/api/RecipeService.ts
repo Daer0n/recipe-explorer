@@ -1,3 +1,10 @@
+interface Images {
+    LARGE?: string;
+    REGULAR?: string;
+    SMALL?: string;
+    THUMBNAIL?: string;
+}
+
 export interface RecipeData {
     id: string;
     mealType: string[];
@@ -7,17 +14,18 @@ export interface RecipeData {
     ingredientLines: string[];
     ingredients: object[];
     url: string;
+    images: Images;
 }
 
 export const RecipeService = {
     baseUrl: 'https://api.edamam.com/api/recipes/v2',
 
     async getAll(
-        query: string = '',
+        query = '',
         diet?: string,
         dish?: string,
-        page: number = 0,
-        pageSize: number = 10,
+        page = 0,
+        pageSize = 10,
     ): Promise<RecipeData[]> {
         const from = page * pageSize;
         const to = from + pageSize;
@@ -58,6 +66,12 @@ export const RecipeService = {
             ingredientLines: recipe.ingredientLines || [],
             ingredients: recipe.ingredients || [],
             url: recipe.url,
+            images: {
+                LARGE: recipe.images?.LARGE?.url || '',
+                REGULAR: recipe.images?.REGULAR?.url || '',
+                SMALL: recipe.images?.SMALL?.url || '',
+                THUMBNAIL: recipe.images?.THUMBNAIL?.url || '',
+            },
         };
     },
 };
