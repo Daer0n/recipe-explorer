@@ -7,7 +7,12 @@ const eslintConfig = [
     {
         files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
         languageOptions: {
-            globals: globals.browser,
+            globals: {
+                ...globals.browser,
+                require: 'readonly',
+                __dirname: 'readonly',
+                module: 'readonly',
+            },
             parserOptions: {
                 project: 'tsconfig.json',
             },
