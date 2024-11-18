@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { COLORS } from '@constants';
 
-export const Container = styled.div`
+export const Container = styled.footer`
     height: 160px;
-    background-color: ${COLORS.blueDark};
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    background-color: ${({ theme }) => theme.background};
+    position: relative;
     width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 100px;
 `;

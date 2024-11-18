@@ -1,13 +1,16 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ReactComponent as LogoLight } from '@assets/images/LogoLight.svg';
+import { ReactComponent as LogoDark } from '@assets/images/LogoDark.svg';
 import { ToggleSwitch } from '@components/ToggleSwitch';
+import { useThemeContext } from '@context';
 
 import { Container, Wrapper, LogoContainer, LinkContainer, StyledLink } from './styled';
 
 export const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const { theme } = useThemeContext();
 
     const activeLink = location.pathname;
 
@@ -19,8 +22,8 @@ export const Header = () => {
         <Container>
             <Wrapper>
                 <LogoContainer onClick={handleNavigation('/')}>
-                    <LogoLight />
-                    <span>Modsen recipe</span>
+                    {theme === 'dark' ? <LogoDark /> : <LogoLight />}
+                    Modsen recipe
                 </LogoContainer>
 
                 <nav>

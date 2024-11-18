@@ -4,7 +4,7 @@ import { COLORS } from '@constants';
 export const Container = styled.div`
     display: flex;
     align-items: center;
-    margin-top: 250px;
+    margin-top: 150px;
 `;
 
 export const Title = styled.div`

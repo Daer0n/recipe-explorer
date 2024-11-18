@@ -1,1 +1,0 @@
-export { SearchRecipe } from './SearchRecipe';

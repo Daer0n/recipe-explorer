@@ -1,6 +1,6 @@
 import React from 'react';
 import { Home } from '@pages/Home';
-import { SearchRecipe } from '@pages/SearchRecipe';
+import { SearchRecipe } from '@pages/Info';
 import { Favorite } from '@pages/Favorite';
 import { NotFound } from '@pages/NotFound';
 
@@ -10,7 +10,7 @@ export const ROUTES = {
         element: <Home />,
     },
     info: {
-        route: '/info',
+        route: '/info/:recipeId',
         element: <SearchRecipe />,
     },
     favorites: {

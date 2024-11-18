@@ -1,9 +1,9 @@
 export const DietType = {
     Any: 'Any',
-    Balanced: 'Balanced',
-    HighFiber: 'High-fiber',
-    HighProtein: 'High-protein',
-    LowCarb: 'Low-carb',
-    LowFat: 'Low-fat',
-    LowSodium: 'Low-sodium',
+    Balanced: 'balanced',
+    HighFiber: 'high-fiber',
+    HighProtein: 'high-protein',
+    LowCarb: 'low-carb',
+    LowFat: 'low-fat',
+    LowSodium: 'low-sodium',
 };

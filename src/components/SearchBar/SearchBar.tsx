@@ -3,24 +3,27 @@ import { SearchInput } from '@components/SearchInput';
 import { SearchItem } from '@components/SearchItem';
 import { RecipeBar } from '@components/RecipeBar';
 import { DietType, DishType } from '@enums';
-import { RecipeService, RecipeData } from '@api';
+import { RecipeService, RecipeData, RecipeResponse } from '@api';
 import { Loader } from '@components/Loader';
 import { useFetching } from '@hooks';
 
-import { Container, SearchItemContainer, Title, Wrapper, Item } from './styled';
+import { Container, SearchItemContainer, Title, Wrapper, Item, ShowMoreButton } from './styled';
 
 export const SearchBar = () => {
     const [inputValue, setInputValue] = useState('');
     const [dietTypeValue, setDietTypeValue] = useState('');
     const [dishTypeValue, setDishTypeValue] = useState('');
     const [recipes, setRecipes] = useState<RecipeData[]>([]);
+    const [nextPageLink, setNextPageLink] = useState<string | undefined>('');
     const [fetchRecipe, isRecipeLoading, recipeError] = useFetching(async () => {
-        const recipesArray: RecipeData[] = await RecipeService.getAll(
+        const response: RecipeResponse = await RecipeService.getAll(
             inputValue,
             dietTypeValue,
             dishTypeValue,
+            nextPageLink,
         );
-        setRecipes(recipesArray);
+        setNextPageLink(response.nextPageUrl);
+        setRecipes((prevRecipes) => [...prevRecipes, ...response.recipes]);
     });
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,6 +38,15 @@ export const SearchBar = () => {
         setDishTypeValue(event.target.value);
     };
 
+    const handleShowMore = () => {
+        fetchRecipe();
+    };
+
+    const handleSearch = async () => {
+        setRecipes([]);
+        await fetchRecipe();
+    };
+
     return (
         <Container>
             <Wrapper>
@@ -43,7 +55,7 @@ export const SearchBar = () => {
                 <SearchInput
                     value={inputValue}
                     onChange={handleInputChange}
-                    onClick={fetchRecipe}
+                    onClick={handleSearch}
                 />
 
                 <SearchItemContainer>
@@ -65,11 +77,14 @@ export const SearchBar = () => {
                         />
                     </Item>
                 </SearchItemContainer>
-
-                {isRecipeLoading && <Loader />}
-                {recipeError && <div>Error fetching recipes: {recipeError}</div>}
             </Wrapper>
             {recipes.length > 0 && <RecipeBar recipes={recipes} />}
+
+            {recipes.length > 0 && !isRecipeLoading && nextPageLink && (
+                <ShowMoreButton onClick={handleShowMore}>Show more</ShowMoreButton>
+            )}
+
+            {isRecipeLoading && <Loader />}
         </Container>
     );
 };

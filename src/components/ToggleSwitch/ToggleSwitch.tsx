@@ -1,12 +1,15 @@
 import React, { useState, ChangeEvent } from 'react';
+import { useThemeContext } from '@context';
 
 import { StyledLabel } from './styled';
 
 export const ToggleSwitch = () => {
-    const [switchState, setSwitchState] = useState(true);
+    const { theme, toggleTheme } = useThemeContext();
+    const [switchState, setSwitchState] = useState(theme === 'dark');
 
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setSwitchState(!switchState);
+        setSwitchState(event.target.checked);
+        toggleTheme();
     };
 
     return (

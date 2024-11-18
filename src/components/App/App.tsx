@@ -1,12 +1,28 @@
 import React from 'react';
 import { Router } from '@components/Router';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from '@themes';
+import { ThemeProvider, useThemeContext } from '@context';
 
 import { Container } from './styled';
 
-export const App = () => {
+const ThemedApp: React.FC = () => {
+    const { theme } = useThemeContext();
+    const currentTheme = theme === 'dark' ? lightTheme : darkTheme;
+
     return (
-        <Container>
-            <Router />
-        </Container>
+        <StyledThemeProvider theme={currentTheme}>
+            <Container>
+                <Router />
+            </Container>
+        </StyledThemeProvider>
+    );
+};
+
+export const App: React.FC = () => {
+    return (
+        <ThemeProvider>
+            <ThemedApp />
+        </ThemeProvider>
     );
 };

@@ -2,11 +2,15 @@ import styled from 'styled-components';
 import { COLORS } from '@constants';
 
 export const Container = styled.div`
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
+    width: 100%;
 `;
 
-export const Wrapper = styled.div`
+export const Content = styled.div`
+    flex: 1;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

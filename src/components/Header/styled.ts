@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { COLORS } from '@constants';
 
 export const Container = styled.div`
-    background-color: ${COLORS.blueDark};
+    background-color: ${({ theme }) => theme.background};
     width: 100%;
     height: 160px;
     display: flex;
@@ -40,11 +40,11 @@ export const LinkContainer = styled.div`
 
 export const StyledLink = styled.div<{ isActive: boolean }>`
     cursor: pointer;
-    margin-right: 20px; /* Отступ между ссылками */
+    margin-right: 20px;
     border-bottom: ${({ isActive }) => (isActive ? '2px solid white' : 'none')};
     transition: border-bottom 0.3s;
 
     &:hover {
-        transform: translateY(-2px); /* Поднимаем текст вверх */
+        transform: translateY(-2px);
     }
 `;

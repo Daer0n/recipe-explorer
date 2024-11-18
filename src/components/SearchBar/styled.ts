@@ -38,3 +38,18 @@ export const SearchItemContainer = styled.div`
 export const Item = styled.div`
     width: 40%;
 `;
+
+export const ShowMoreButton = styled.button`
+    width: 250px;
+    height: 50px;
+    filter: drop-shadow(0px 4px 10px rgba(104, 109, 224, 0.5));
+    background-color: ${({ theme }) => theme.background};
+    border-radius: 50px;
+    color: ${COLORS.white};
+    cursor: pointer;
+    margin-top: 40px;
+    outline: none;
+    border: none;
+    font-family: Roboto;
+    font-size: 16px;
+`;
