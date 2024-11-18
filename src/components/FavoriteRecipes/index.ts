@@ -1,0 +1,1 @@
+export { FavoriteRecipes } from './FavoriteRecipes';
