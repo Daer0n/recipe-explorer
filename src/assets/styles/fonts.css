@@ -8,3 +8,12 @@
     src: url('@assets/fonts/Inter/static/Inter_24pt-Regular.ttf');
 }
 
+@font-face {
+    font-family: Poppins;
+    src: url('@assets/fonts/Poppins/Poppins-Black.ttf');
+}
+
+@font-face {
+    font-family: PlayfairDisplay;
+    src: url('@assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf');
+}
