@@ -1,0 +1,1 @@
+export { SearchRecipe } from './Info';
