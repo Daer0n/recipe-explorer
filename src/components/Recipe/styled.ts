@@ -8,6 +8,10 @@ export const Container = styled.div`
     background-color: rgba(204, 204, 204, 0.5);
     gap: 20px;
     position: relative;
+
+    @media (max-width: 425px) {
+        height: 370px;
+    }
 `;
 
 export const RecipeImage = styled.img`
@@ -29,6 +33,12 @@ export const RecipeLabel = styled.div`
     line-height: normal;
     color: ${({ theme }) => theme.background};
     margin-top: 15px;
+
+    @media (max-width: 425px) {
+        font-size: 18px;
+        width: 60%;
+        margin: 0;
+    }
 `;
 
 export const ButtonContainer = styled.div`
@@ -36,6 +46,22 @@ export const ButtonContainer = styled.div`
     bottom: 10px;
     right: 15px;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
+
+    @media (max-width: 425px) {
+        bottom: 1px;
+    }
+`;
+
+export const InfoContainer = styled.div`
+    @media (max-width: 425px) {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
 `;

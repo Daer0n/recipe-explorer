@@ -15,6 +15,6 @@ export const StyledLoader = styled.div`
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 6px dashed ${COLORS.blue};
+    border: 6px dashed ${({ theme }) => theme.background};
     animation: ${rotate} 2s infinite linear;
 `;

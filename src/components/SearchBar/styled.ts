@@ -8,6 +8,10 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
     margin-top: 150px;
+
+    @media (max-width: 860px) {
+        margin-top: 50px;
+    }
 `;
 
 export const Wrapper = styled.div`
@@ -16,6 +20,10 @@ export const Wrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 1440px) {
+        width: 80%;
+    }
 `;
 
 export const Title = styled.div`
@@ -26,6 +34,20 @@ export const Title = styled.div`
     line-height: 98px;
     color: ${COLORS.blueDark};
     white-space: nowrap;
+
+    @media (max-width: 1440px) {
+        font-size: 66px;
+        line-height: 68px;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 56px;
+        line-height: 68px;
+    }
+
+    @media (max-width: 860px) {
+        display: none;
+    }
 `;
 
 export const SearchItemContainer = styled.div`
@@ -33,10 +55,25 @@ export const SearchItemContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 45px;
+
+    @media (max-width: 860px) {
+        width: 100%;
+        flex-direction: column;
+        gap: 30px;
+    }
 `;
 
 export const Item = styled.div`
     width: 40%;
+    min-height: 55px;
+
+    @media (max-width: 1024px) {
+        width: 45%;
+    }
+
+    @media (max-width: 860px) {
+        width: 100%;
+    }
 `;
 
 export const ShowMoreButton = styled.button`

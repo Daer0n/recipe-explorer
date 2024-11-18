@@ -11,6 +11,8 @@ const override = (config) => {
         '@types': path.resolve(__dirname, 'src/types/'),
         '@hooks': path.resolve(__dirname, 'src/hooks/'),
         '@api': path.resolve(__dirname, 'src/api/'),
+        '@context': path.resolve(__dirname, 'src/context/'),
+        '@themes': path.resolve(__dirname, 'src/themes/'),
     };
     return config;
 };

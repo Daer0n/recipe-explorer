@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ReactComponent as LogoLight } from '@assets/images/LogoLight.svg';
 import { ReactComponent as LogoDark } from '@assets/images/LogoDark.svg';
 import { ToggleSwitch } from '@components/ToggleSwitch';
 import { useThemeContext } from '@context';
+import { useScreenWidthSize } from '@hooks';
+import { BurgerMenu } from '@components/BurgerMenu/BurgerMenu';
+import { ReactComponent as BurgerIcon } from '@assets/images/BurgerIcon.svg';
 
-import { Container, Wrapper, LogoContainer, LinkContainer, StyledLink } from './styled';
+import { Container, Wrapper, LogoContainer, LinkContainer, StyledLink, BurgerIc } from './styled';
 
-export const Header = () => {
+export const Header: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { theme } = useThemeContext();
-
+    const { screenWidth } = useScreenWidthSize();
     const activeLink = location.pathname;
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleNavigation = (path: string) => () => {
         navigate(path);
+        setIsMenuOpen(false);
+    };
+
+    const toggleMenu = () => {
+        setIsMenuOpen((prev) => !prev);
     };
 
     return (
@@ -26,7 +35,12 @@ export const Header = () => {
                     Modsen recipe
                 </LogoContainer>
 
-                <nav>
+                {screenWidth <= 600 ? (
+                    <>
+                        <BurgerIcon onClick={toggleMenu} />
+                        {isMenuOpen && <BurgerMenu onClose={toggleMenu} />}
+                    </>
+                ) : (
                     <LinkContainer>
                         <StyledLink onClick={handleNavigation('/')} isActive={activeLink === '/'}>
                             Home
@@ -39,7 +53,7 @@ export const Header = () => {
                         </StyledLink>
                         <ToggleSwitch />
                     </LinkContainer>
-                </nav>
+                )}
             </Wrapper>
         </Container>
     );

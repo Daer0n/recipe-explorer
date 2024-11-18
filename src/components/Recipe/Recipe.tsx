@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { FavoriteButton } from '@components/FavoriteButton';
 import { CookedButton } from '@components/CookedButton';
 
-import { Container, RecipeImage, RecipeLabel, ButtonContainer } from './styled';
+import { Container, RecipeImage, RecipeLabel, ButtonContainer, InfoContainer } from './styled';
 
 interface RecipeProps {
     recipe: RecipeData;
@@ -20,7 +20,7 @@ export const Recipe: React.FC<RecipeProps> = ({ recipe }) => {
     const navigate = useNavigate();
 
     const truncatedLabel =
-        recipe.label.length > 26 ? `${recipe.label.slice(0, 18)}...` : recipe.label;
+        recipe.label.length > 20 ? `${recipe.label.slice(0, 18)}...` : recipe.label;
 
     useEffect(() => {
         const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -33,15 +33,17 @@ export const Recipe: React.FC<RecipeProps> = ({ recipe }) => {
     return (
         <Container onClick={() => navigate(`/info/${recipe.id}`)}>
             <RecipeImage src={recipe.images.REGULAR} alt={recipe.label} />
-            <RecipeLabel>{truncatedLabel}</RecipeLabel>
-            <ButtonContainer>
-                <FavoriteButton
-                    isFavorite={isFavorite}
-                    setIsFavorite={setIsFavorite}
-                    recipe={recipe}
-                />
-                <CookedButton isCooked={isCooked} setIsCooked={setIsCooked} recipe={recipe} />
-            </ButtonContainer>
+            <InfoContainer>
+                <RecipeLabel>{truncatedLabel}</RecipeLabel>
+                <ButtonContainer>
+                    <FavoriteButton
+                        isFavorite={isFavorite}
+                        setIsFavorite={setIsFavorite}
+                        recipe={recipe}
+                    />
+                    <CookedButton isCooked={isCooked} setIsCooked={setIsCooked} recipe={recipe} />
+                </ButtonContainer>
+            </InfoContainer>
         </Container>
     );
 };

@@ -7,6 +7,10 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     gap: 40px;
+
+    @media (max-width: 1440px) {
+        flex-direction: column;
+    }
 `;
 
 export const Content = styled.div`
@@ -16,6 +20,15 @@ export const Content = styled.div`
     padding: 75px 35px 75px 95px;
     flex-direction: column;
     border-radius: 28px;
+
+    @media (max-width: 1440px) {
+        width: 60%;
+        margin-top: 30px;
+    }
+
+    @media (max-width: 860px) {
+        padding: 35px 20px 35px 20px;
+    }
 `;
 
 export const MealType = styled.div`
@@ -35,6 +48,10 @@ export const Label = styled.div`
     font-weight: 500;
     line-height: normal;
     color: ${({ theme }) => theme.title};
+
+    @media (max-width: 1024px) {
+        font-size: 30px;
+    }
 `;
 
 export const HeaderContainer = styled.div`
@@ -55,13 +72,17 @@ export const InfoContainer = styled.div`
     display: flex;
     gap: 30px;
     margin-top: 40px;
+
+    @media (max-width: 860px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `;
 
 export const Info = styled.div`
     color: ${({ theme }) => theme.title};
     font-family: Poppins;
     font-size: 16px;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +101,7 @@ export const Ingredients = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     margin-top: 25px;
 `;
 
@@ -153,4 +174,26 @@ export const ShadowLink = styled.a`
 export const RecipeImage = styled.img`
     width: 30%;
     border-radius: 20px;
+
+    @media (max-width: 1440px) {
+        margin-top: 70px;
+        width: 30%;
+    }
+
+    @media (max-width: 1024px) {
+        margin-top: 70px;
+        width: 40%;
+    }
+
+    @media (max-width: 580px) {
+        margin-top: 70px;
+        width: 60%;
+    }
+`;
+
+export const IngredientInfo = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 `;

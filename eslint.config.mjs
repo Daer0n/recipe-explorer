@@ -25,6 +25,7 @@ const eslintConfig = [
             'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.tsx'] }],
             'import/prefer-default-export': 'off',
             quotes: ['error', 'single'],
+            'react-hooks/exhaustive-deps': 'off',
         },
     },
     {

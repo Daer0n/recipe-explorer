@@ -22,6 +22,15 @@ export const Wrapper = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+
+    @media (max-width: 860px) {
+        width: 90%;
+        font-size: 20px;
+    }
+
+    @media (max-width: 600px) {
+        width: 80%;
+    }
 `;
 
 export const LogoContainer = styled.div`
@@ -36,6 +45,10 @@ export const LinkContainer = styled.div`
     align-items: center;
     cursor: pointer;
     gap: 60px;
+
+    @media (max-width: 860px) {
+        gap: 30px;
+    }
 `;
 
 export const StyledLink = styled.div<{ isActive: boolean }>`
@@ -46,5 +59,23 @@ export const StyledLink = styled.div<{ isActive: boolean }>`
 
     &:hover {
         transform: translateY(-2px);
+    }
+`;
+
+export const BurgerIc = styled.div`
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    position: relative;
+
+    &::before,
+    &::after,
+    & div {
+        content: '';
+        display: block;
+        height: 4px;
+        background-color: #333;
+        margin: 4px 0;
+        transition: 0.3s;
     }
 `;

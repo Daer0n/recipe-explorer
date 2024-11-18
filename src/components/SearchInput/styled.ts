@@ -20,6 +20,10 @@ export const Input = styled.input<InputProps>`
     font-family: Inter;
     outline: none;
     color: ${COLORS.golden};
+
+    @media (max-width: 860px) {
+        font-size: 16px;
+    }
 `;
 
 export const Button = styled.button`

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useFetching } from '@hooks';
+import { useFetching, useScreenWidthSize } from '@hooks';
 import { RecipeData, RecipeService } from '@api';
 import { FavoriteButton } from '@components/FavoriteButton';
 import { CookedButton } from '@components/CookedButton';
@@ -30,6 +30,7 @@ import {
     Ingredient,
     Circle,
     RecipeImage,
+    IngredientInfo,
 } from './styled';
 
 interface Ingredient {
@@ -47,6 +48,7 @@ export const RecipeInfo: React.FC<RecipeInfoProps> = ({ id }) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const [isCooked, setIsCooked] = useState(false);
     const { theme } = useThemeContext();
+    const { screenWidth } = useScreenWidthSize();
     const [fetchRecipe, isRecipeLoading, recipeError] = useFetching(async () => {
         if (id) {
             const recipeData: RecipeData = await RecipeService.getRecipeById(id);
@@ -76,6 +78,7 @@ export const RecipeInfo: React.FC<RecipeInfoProps> = ({ id }) => {
 
     return (
         <Container>
+            {screenWidth <= 1440 && <RecipeImage src={recipe.images.LARGE} />}
             <Content>
                 <HeaderContainer>
                     <MealType>Meal type - {recipe.mealType}</MealType>
@@ -106,37 +109,60 @@ export const RecipeInfo: React.FC<RecipeInfoProps> = ({ id }) => {
                         Cuisine Type - {recipe.cuisineType[0]}
                     </Info>
                 </InfoContainer>
+                {screenWidth > 580 ? (
+                    <>
+                        <IngredientContainer>
+                            <Title>Ingredients</Title>
+                            <Ingredients>
+                                {recipe.ingredientLines.map((ingredient: string) => (
+                                    <Ingredient key={ingredient}>
+                                        <Circle />
+                                        {ingredient}
+                                    </Ingredient>
+                                ))}
+                            </Ingredients>
+                        </IngredientContainer>
 
-                <IngredientContainer>
-                    <Title>Ingredients</Title>
-                    <Ingredients>
-                        {recipe.ingredientLines.map((ingredient: string) => (
-                            <Ingredient key={ingredient}>
-                                <Circle />
-                                {ingredient}
-                            </Ingredient>
-                        ))}
-                    </Ingredients>
-                </IngredientContainer>
+                        <ProductContainer>
+                            <Title>Products</Title>
+                            <Products>
+                                {recipe.ingredients.map((ingredient: Ingredient) => (
+                                    <ProductImage
+                                        src={ingredient.image || ''}
+                                        alt={ingredient.text || 'Ingredient image'}
+                                        key={ingredient.foodId}
+                                    />
+                                ))}
+                            </Products>
+                        </ProductContainer>
+                    </>
+                ) : (
+                    <IngredientContainer>
+                        <Title>Ingredients</Title>
+                        <Ingredients>
+                            {recipe.ingredients.map((ingredient: Ingredient) => (
+                                <IngredientInfo key={ingredient.foodId}>
+                                    <Ingredient key={ingredient.foodId}>
+                                        <Circle />
+                                        {ingredient.text}
+                                    </Ingredient>
 
-                <ProductContainer>
-                    <Title>Products</Title>
-                    <Products>
-                        {recipe.ingredients.map((ingredient: Ingredient) => (
-                            <ProductImage
-                                src={ingredient.image || ''}
-                                alt={ingredient.text || 'Ingredient image'}
-                                key={ingredient.foodId}
-                            />
-                        ))}
-                    </Products>
-                </ProductContainer>
+                                    <ProductImage
+                                        src={ingredient.image || ''}
+                                        alt={ingredient.text || 'Ingredient image'}
+                                        key={ingredient.foodId}
+                                    />
+                                </IngredientInfo>
+                            ))}
+                        </Ingredients>
+                    </IngredientContainer>
+                )}
 
                 <LinkContainer>
                     <ShadowLink href={recipe.url}>Recipe link</ShadowLink>
                 </LinkContainer>
             </Content>
-            <RecipeImage src={recipe.images.LARGE} />
+            {screenWidth > 1440 && <RecipeImage src={recipe.images.LARGE} />}
         </Container>
     );
 };

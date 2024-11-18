@@ -25,4 +25,14 @@ export const StyledLabel = styled.label<{ checked: boolean }>`
             left 0.3s,
             background 0.3s;
     }
+
+    @media (max-width: 860px) {
+        height: 40px;
+        width: 70px;
+
+        &:after {
+            width: 25px;
+            height: 25px;
+        }
+    }
 `;

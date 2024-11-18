@@ -19,6 +19,17 @@ export const Content = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
     gap: 40px;
     margin-top: 100px;
+
+    @media (max-width: 1024px) {
+        margin-top: 80px;
+    }
+
+    & > :only-child {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 export const EmptyContainer = styled.div`
