@@ -15,6 +15,7 @@ export const Content = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin-top: 150px;
     gap: 45px;
     font-family: 'Inter';
@@ -26,6 +27,10 @@ export const StatusCode = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    @media (max-width: 680px) {
+        font-size: 100px;
+    }
 `;
 
 export const Title = styled.div`
@@ -34,6 +39,10 @@ export const Title = styled.div`
     font-style: normal;
     font-weight: 300;
     line-height: normal;
+
+    @media (max-width: 680px) {
+        font-size: 30px;
+    }
 `;
 
 export const Description = styled.div`
@@ -42,6 +51,10 @@ export const Description = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+
+    @media (max-width: 680px) {
+        font-size: 15px;
+    }
 `;
 
 export const Button = styled.button`
