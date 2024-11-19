@@ -22,7 +22,8 @@ export const Content = styled.div`
     & > :only-child {
         grid-column: 1 / -1;
         display: flex;
-        justify-content: center;
+
         align-items: center;
+        flex-direction: column;
     }
 `;
