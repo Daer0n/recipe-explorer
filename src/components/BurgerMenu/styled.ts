@@ -6,8 +6,8 @@ export const Container = styled.div`
     padding: 10px;
     background-color: ${({ theme }) => theme.background};
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 0px;
+    position: fixed;
+    top: 0;
     right: 0;
     width: 60%;
     height: 100vh;
@@ -26,11 +26,4 @@ export const Menu = styled.div`
 export const StyledLink = styled.div<{ isActive: boolean }>`
     cursor: pointer;
     margin-right: 20px;
-    width: 100px;
-    border-bottom: ${({ isActive }) => (isActive ? '2px solid white' : 'none')};
-    transition: border-bottom 0.3s;
-
-    &:hover {
-        transform: translateY(-2px);
-    }
 `;

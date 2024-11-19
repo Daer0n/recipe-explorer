@@ -1,5 +1,5 @@
 export const DietType = {
-    Any: 'Any',
+    Any: 'any',
     Balanced: 'balanced',
     HighFiber: 'high-fiber',
     HighProtein: 'high-protein',

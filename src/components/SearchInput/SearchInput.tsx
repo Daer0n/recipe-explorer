@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ReactComponent as SearchIcon } from '@assets/images/SearchIcon.svg';
 import { z } from 'zod';
 
-import { Button, Container, Input, ErrorMessage } from './styled';
+import { Button, Container, Input, ErrorMessage, InputWrapper } from './styled';
 
 interface SearchInputProps {
     value: string;
@@ -45,17 +45,19 @@ export const SearchInput: React.FC<SearchInputProps> = ({ value, onChange, onCli
 
     return (
         <Container>
-            <Input
-                name="query"
-                type="text"
-                value={value}
-                onChange={handleValidation}
-                placeholder="Search Your Favorite Food"
-                hasError={Boolean(error)}
-            />
-            <Button type="button" onClick={handleClick}>
-                <SearchIcon />
-            </Button>
+            <InputWrapper>
+                <Input
+                    name="query"
+                    type="text"
+                    value={value}
+                    onChange={handleValidation}
+                    placeholder="Search Your Favorite Food"
+                    hasError={Boolean(error)}
+                />
+                <Button type="button" onClick={handleClick}>
+                    <SearchIcon />
+                </Button>
+            </InputWrapper>
             {error && <ErrorMessage>{error}</ErrorMessage>}
         </Container>
     );

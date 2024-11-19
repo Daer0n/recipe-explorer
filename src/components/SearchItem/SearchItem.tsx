@@ -25,7 +25,7 @@ export const SearchItem: React.FC<SearchItemProps> = ({
     const handleOptionClick = (key: string) => {
         const event = {
             target: {
-                value: key === 'Any' ? '' : key,
+                value: key === 'any' ? '' : key,
             },
         } as React.ChangeEvent<HTMLInputElement>;
         onChange(event);

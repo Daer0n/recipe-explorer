@@ -4,6 +4,14 @@ import { COLORS } from '@constants';
 export const Container = styled.div`
     width: 100%;
     position: relative;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const InputWrapper = styled.div`
+    position: relative;
+    width: 100%;
 `;
 
 interface InputProps {
@@ -16,7 +24,6 @@ export const Input = styled.input<InputProps>`
     border: 1px solid ${({ hasError }) => (hasError ? COLORS.red : COLORS.golden)};
     border-radius: 50px;
     padding: 12px 48px 12px 16px;
-    margin-top: 65px;
     font-size: 24px;
     font-family: Inter;
     outline: none;
@@ -33,7 +40,7 @@ export const Button = styled.button`
     background: transparent;
     border: none;
     position: absolute;
-    top: 80%;
+    top: 50%;
     right: 16px;
     transform: translateY(-50%);
     cursor: pointer;
@@ -44,8 +51,12 @@ export const Button = styled.button`
 `;
 
 export const ErrorMessage = styled.div`
-    margin-top: 10px;
+    margin-top: 5px;
     color: ${COLORS.red};
     font-size: 24px;
     font-family: Inter;
+
+    @media (max-width: 860px) {
+        font-size: 16px;
+    }
 `;

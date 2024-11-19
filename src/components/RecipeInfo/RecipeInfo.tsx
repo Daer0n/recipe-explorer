@@ -57,6 +57,7 @@ export const RecipeInfo: React.FC<RecipeInfoProps> = ({ id, favorite, cooked }) 
             setRecipe(recipeData);
         }
     });
+    const imageSrc = recipe?.images.LARGE || recipe?.images.REGULAR;
 
     useEffect(() => {
         fetchRecipe();
@@ -81,7 +82,7 @@ export const RecipeInfo: React.FC<RecipeInfoProps> = ({ id, favorite, cooked }) 
 
     return (
         <Container>
-            {screenWidth <= 1440 && <RecipeImage src={recipe.images.LARGE} />}
+            {screenWidth <= 1440 && <RecipeImage src={imageSrc} />}
             <Content>
                 <HeaderContainer>
                     <MealType>Meal type - {recipe.mealType}</MealType>
@@ -165,7 +166,7 @@ export const RecipeInfo: React.FC<RecipeInfoProps> = ({ id, favorite, cooked }) 
                     <ShadowLink href={recipe.url}>Recipe link</ShadowLink>
                 </LinkContainer>
             </Content>
-            {screenWidth > 1440 && <RecipeImage src={recipe.images.LARGE} />}
+            {screenWidth > 1440 && <RecipeImage src={imageSrc} />}
         </Container>
     );
 };

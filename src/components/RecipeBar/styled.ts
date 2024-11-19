@@ -19,6 +19,10 @@ export const Content = styled.div`
         margin-top: 80px;
     }
 
+    @media (max-width: 768px) {
+        margin-top: 40px;
+    }
+
     & > :only-child {
         grid-column: 1 / -1;
         display: flex;
