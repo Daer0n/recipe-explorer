@@ -23,7 +23,7 @@ export const Menu = styled.div`
     gap: 50px;
 `;
 
-export const StyledLink = styled.div<{ isActive: boolean }>`
+export const StyledLink = styled.div`
     cursor: pointer;
     margin-right: 20px;
 `;

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useCallback } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ToggleSwitch } from '@components/ToggleSwitch';
 
 import { StyledLink, Container, Menu } from './styled';
@@ -10,8 +10,6 @@ interface BurgerMenuProps {
 
 export const BurgerMenu: React.FC<BurgerMenuProps> = ({ onClose }) => {
     const navigate = useNavigate();
-    const location = useLocation();
-    const activeLink = location.pathname;
     const menuRef = useRef<HTMLDivElement>(null);
 
     const handleNavigation = (path: string) => () => {
@@ -37,15 +35,8 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ onClose }) => {
     return (
         <Container>
             <Menu ref={menuRef}>
-                <StyledLink onClick={handleNavigation('/')} isActive={activeLink === '/'}>
-                    Home
-                </StyledLink>
-                <StyledLink
-                    onClick={handleNavigation('/favorites')}
-                    isActive={activeLink === '/favorites'}
-                >
-                    Cooked
-                </StyledLink>
+                <StyledLink onClick={handleNavigation('/')}>Home</StyledLink>
+                <StyledLink onClick={handleNavigation('/favorites')}>Cooked</StyledLink>
                 <ToggleSwitch />
             </Menu>
         </Container>

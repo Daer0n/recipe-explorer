@@ -8,7 +8,7 @@ import { useScreenWidthSize } from '@hooks';
 import { BurgerMenu } from '@components/BurgerMenu/BurgerMenu';
 import { ReactComponent as BurgerIcon } from '@assets/images/BurgerIcon.svg';
 
-import { Container, Wrapper, LogoContainer, LinkContainer, StyledLink, BurgerIc } from './styled';
+import { Container, Wrapper, LogoContainer, LinkContainer, StyledLink } from './styled';
 
 export const Header: React.FC = () => {
     const navigate = useNavigate();

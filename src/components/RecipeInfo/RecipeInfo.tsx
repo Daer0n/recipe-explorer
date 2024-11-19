@@ -33,7 +33,7 @@ import {
     IngredientInfo,
 } from './styled';
 
-interface Ingredient {
+interface IngredientData {
     text?: string;
     image?: string;
     foodId?: string;
@@ -130,7 +130,7 @@ export const RecipeInfo: React.FC<RecipeInfoProps> = ({ id, favorite, cooked }) 
                         <ProductContainer>
                             <Title>Products</Title>
                             <Products>
-                                {recipe.ingredients.map((ingredient: Ingredient) => (
+                                {recipe.ingredients.map((ingredient: IngredientData) => (
                                     <ProductImage
                                         src={ingredient.image || ''}
                                         alt={ingredient.text || 'Ingredient image'}
@@ -144,7 +144,7 @@ export const RecipeInfo: React.FC<RecipeInfoProps> = ({ id, favorite, cooked }) 
                     <IngredientContainer>
                         <Title>Ingredients</Title>
                         <Ingredients>
-                            {recipe.ingredients.map((ingredient: Ingredient) => (
+                            {recipe.ingredients.map((ingredient: IngredientData) => (
                                 <IngredientInfo key={ingredient.foodId}>
                                     <Ingredient key={ingredient.foodId}>
                                         <Circle />
