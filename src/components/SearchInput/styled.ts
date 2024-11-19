@@ -3,6 +3,7 @@ import { COLORS } from '@constants';
 
 export const Container = styled.div`
     width: 100%;
+    position: relative;
 `;
 
 interface InputProps {
@@ -23,6 +24,7 @@ export const Input = styled.input<InputProps>`
 
     @media (max-width: 860px) {
         font-size: 16px;
+        padding: 12px 32px 12px 12px;
     }
 `;
 
@@ -31,10 +33,14 @@ export const Button = styled.button`
     background: transparent;
     border: none;
     position: absolute;
-    top: 52%;
-    right: 400px;
+    top: 80%;
+    right: 16px;
     transform: translateY(-50%);
     cursor: pointer;
+
+    @media (max-width: 860px) {
+        right: 8px;
+    }
 `;
 
 export const ErrorMessage = styled.div`
