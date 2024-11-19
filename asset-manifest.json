@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/github.io/recipe-explorer/static/css/main.deb32e75.css",
-    "main.js": "/github.io/recipe-explorer/static/js/main.3d3cb919.js",
+    "main.js": "/github.io/recipe-explorer/static/js/main.15ccecd3.js",
     "static/media/Inter_24pt-Regular.ttf": "/github.io/recipe-explorer/static/media/Inter_24pt-Regular.fcd4310affaf30346b67.ttf",
     "static/media/PlayfairDisplay-VariableFont_wght.ttf": "/github.io/recipe-explorer/static/media/PlayfairDisplay-VariableFont_wght.bf46a6bcddc9999a295e.ttf",
     "static/media/Poppins-Black.ttf": "/github.io/recipe-explorer/static/media/Poppins-Black.d8b850b920a5ef49d752.ttf",
@@ -22,10 +22,10 @@
     "static/media/ZipDark.svg": "/github.io/recipe-explorer/static/media/ZipDark.4aab3b1d00e004ba908a1529e3c70aa9.svg",
     "static/media/ZipLight.svg": "/github.io/recipe-explorer/static/media/ZipLight.462e6dfb28b57429b1920504e5e20a89.svg",
     "main.deb32e75.css.map": "/github.io/recipe-explorer/static/css/main.deb32e75.css.map",
-    "main.3d3cb919.js.map": "/github.io/recipe-explorer/static/js/main.3d3cb919.js.map"
+    "main.15ccecd3.js.map": "/github.io/recipe-explorer/static/js/main.15ccecd3.js.map"
   },
   "entrypoints": [
     "static/css/main.deb32e75.css",
-    "static/js/main.3d3cb919.js"
+    "static/js/main.15ccecd3.js"
   ]
 }
