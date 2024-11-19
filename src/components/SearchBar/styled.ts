@@ -90,3 +90,20 @@ export const ShowMoreButton = styled.button`
     font-family: Roboto;
     font-size: 16px;
 `;
+
+export const EmptyResponse = styled.div`
+    font-family: Inter;
+    font-size: 46px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 98px;
+    color: ${COLORS.blueDark};
+
+    @media (max-width: 860px) {
+        font-size: 26px;
+    }
+
+    @media (max-width: 425px) {
+        font-size: 20px;
+    }
+`;

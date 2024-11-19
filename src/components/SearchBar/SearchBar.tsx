@@ -7,7 +7,15 @@ import { RecipeService, RecipeData, RecipeResponse } from '@api';
 import { Loader } from '@components/Loader';
 import { useFetching } from '@hooks';
 
-import { Container, SearchItemContainer, Title, Wrapper, Item, ShowMoreButton } from './styled';
+import {
+    Container,
+    SearchItemContainer,
+    Title,
+    Wrapper,
+    Item,
+    ShowMoreButton,
+    EmptyResponse,
+} from './styled';
 
 export const SearchBar = () => {
     const [inputValue, setInputValue] = useState('');
@@ -15,6 +23,7 @@ export const SearchBar = () => {
     const [dishTypeValue, setDishTypeValue] = useState('');
     const [recipes, setRecipes] = useState<RecipeData[]>([]);
     const [nextPageLink, setNextPageLink] = useState<string | undefined>('');
+    const [isEmptyResponse, setIsEmptyResponse] = useState(false);
     const [fetchRecipe, isRecipeLoading, recipeError] = useFetching(async () => {
         const response: RecipeResponse = await RecipeService.getAll(
             inputValue,
@@ -23,6 +32,13 @@ export const SearchBar = () => {
             nextPageLink,
         );
         setNextPageLink(response.nextPageUrl);
+
+        if (response.recipes.length === 0) {
+            setIsEmptyResponse(true);
+        } else {
+            setIsEmptyResponse(false);
+        }
+
         setRecipes((prevRecipes) => [...prevRecipes, ...response.recipes]);
     });
 
@@ -44,6 +60,7 @@ export const SearchBar = () => {
 
     const handleSearch = async () => {
         setRecipes([]);
+        setIsEmptyResponse(false);
         await fetchRecipe();
     };
 
@@ -78,12 +95,14 @@ export const SearchBar = () => {
                     </Item>
                 </SearchItemContainer>
             </Wrapper>
+
+            {isEmptyResponse && <EmptyResponse>No recipes found for your request</EmptyResponse>}
+
             {recipes.length > 0 && <RecipeBar recipes={recipes} />}
 
             {recipes.length > 0 && !isRecipeLoading && nextPageLink && (
                 <ShowMoreButton onClick={handleShowMore}>Show more</ShowMoreButton>
             )}
-
             {isRecipeLoading && <Loader />}
         </Container>
     );
