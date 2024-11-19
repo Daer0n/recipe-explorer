@@ -7,14 +7,17 @@ import { useParams } from 'react-router-dom';
 import { Container, Content } from './styled';
 
 export const SearchRecipe = () => {
-    const { recipeId } = useParams();
+    const { recipeId, isFavorite, isCooked } = useParams();
+
+    const favorite = isFavorite === 'true';
+    const cooked = isCooked === 'true';
 
     return (
         <Container>
             <Header />
 
             <Content>
-                <RecipeInfo id={recipeId} />
+                <RecipeInfo id={recipeId} favorite={favorite} cooked={cooked} />
             </Content>
 
             <Footer />

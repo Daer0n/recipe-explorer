@@ -41,12 +41,14 @@ interface Ingredient {
 
 interface RecipeInfoProps {
     id: string | undefined;
+    favorite: boolean;
+    cooked: boolean;
 }
 
-export const RecipeInfo: React.FC<RecipeInfoProps> = ({ id }) => {
+export const RecipeInfo: React.FC<RecipeInfoProps> = ({ id, favorite, cooked }) => {
     const [recipe, setRecipe] = useState<RecipeData | undefined>(undefined);
-    const [isFavorite, setIsFavorite] = useState(false);
-    const [isCooked, setIsCooked] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(favorite);
+    const [isCooked, setIsCooked] = useState(cooked);
     const { theme } = useThemeContext();
     const { screenWidth } = useScreenWidthSize();
     const [fetchRecipe, isRecipeLoading, recipeError] = useFetching(async () => {
@@ -58,7 +60,8 @@ export const RecipeInfo: React.FC<RecipeInfoProps> = ({ id }) => {
 
     useEffect(() => {
         fetchRecipe();
-    }, [id, fetchRecipe]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     if (isRecipeLoading) {
         return (

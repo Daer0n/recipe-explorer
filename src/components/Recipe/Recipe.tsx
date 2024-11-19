@@ -31,7 +31,7 @@ export const Recipe: React.FC<RecipeProps> = ({ recipe }) => {
     }, [recipe.id]);
 
     return (
-        <Container onClick={() => navigate(`/info/${recipe.id}`)}>
+        <Container onClick={() => navigate(`/info/${recipe.id}/${isFavorite}/${isCooked}`)}>
             <RecipeImage src={recipe.images.REGULAR} alt={recipe.label} />
             <InfoContainer>
                 <RecipeLabel>{truncatedLabel}</RecipeLabel>

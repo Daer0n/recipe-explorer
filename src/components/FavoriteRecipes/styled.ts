@@ -23,13 +23,6 @@ export const Content = styled.div`
     @media (max-width: 1024px) {
         margin-top: 80px;
     }
-
-    & > :only-child {
-        grid-column: 1 / -1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 `;
 
 export const EmptyContainer = styled.div`

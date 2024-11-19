@@ -10,7 +10,7 @@ export const ROUTES = {
         element: <Home />,
     },
     info: {
-        route: '/info/:recipeId',
+        route: '/info/:recipeId/:isFavorite/:isCooked',
         element: <SearchRecipe />,
     },
     favorites: {
