@@ -41,8 +41,8 @@ export const SearchBar = () => {
 
         setRecipes((prevRecipes) => [...prevRecipes, ...response.recipes]);
     });
-
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
         setInputValue(event.target.value);
     };
 

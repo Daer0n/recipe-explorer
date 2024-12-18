@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
             <Wrapper>
                 <LogoContainer onClick={handleNavigation('/')}>
                     {theme === 'dark' ? <LogoDark /> : <LogoLight />}
-                    Modsen recipe
+                    Recipe explorer
                 </LogoContainer>
 
                 {screenWidth <= 600 ? (
